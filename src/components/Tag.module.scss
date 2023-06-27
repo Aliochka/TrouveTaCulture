@@ -1,0 +1,34 @@
+.tag {
+  &:hover {
+    background-color: grey;
+  }
+
+  white-space: nowrap;
+  justify-content: center;
+  border: solid 1px pink;
+  border-radius: 1px;
+  color: pink;
+  display: inline-flex;
+  line-height: 16px;
+  padding: 4px;
+  margin: 4px;
+
+  &-closeable {
+    background-color: red;
+    border-color: red;
+    color: red;
+  }
+
+  &-close-button {
+    line-height: 16px;
+    background: none;
+    border: none;
+    display: flex;
+  }
+
+  &.is-selected {
+    background-color: blue;
+    border-color: blue;
+    color: white;
+  }
+}

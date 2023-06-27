@@ -3,6 +3,7 @@ import styles from './App.module.scss'
 import Map from './components/Map.tsx'
 import VenueCard from './components/VenueCard.tsx'
 import LibraryIcon from './assets/library.svg'
+import MultiSelect from './components/MultiSelect.tsx'
 
 function App() {
   const [latitude, setLatitude] = useState<number | undefined>(undefined)
@@ -23,12 +24,20 @@ function App() {
       []
   })
 
+  const options = [
+    { value: 'option1', label: 'une librairie' },
+    { value: 'option2', label: 'un disquaire' },
+    { value: 'option3', label: 'un musée' },
+    { value: 'option4', label: 'une discothèque' },
+  ]
+
   return (
     <div className={styles['content']}>
       <h1>Trouve ta culture</h1>
       <p className={styles['explanations']}>
         Utilise la carte pour trouver des lieux culturels autour de toi
       </p>
+      <MultiSelect options={options} />
       <Map latitude={latitude} longitude={longitude} />
       <VenueCard
         name="Ma librairie"
