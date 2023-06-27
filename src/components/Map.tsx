@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import styles from './Map.module.scss'
 
 interface MapProps {
   latitude?: number
@@ -24,7 +25,7 @@ function Map({ latitude = 48.505, longitude = 2.49 }: MapProps) {
   }, [latitude, longitude])
 
   // @ts-expect-error - mapRef type is incorrerect
-  return <div ref={mapRef} style={{ width: '100%', height: '800px' }}></div>
+  return <div ref={mapRef} className={styles['map']}></div>
 }
 
 export default Map
