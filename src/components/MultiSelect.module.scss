@@ -1,0 +1,24 @@
+.multiselect {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 300px;
+  padding-bottom: 1rem;
+
+  input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+
+    &::placeholder {
+      font-weight: bold;
+    }
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  text-align: left;
+}
