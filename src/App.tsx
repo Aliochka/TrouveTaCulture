@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import styles from './App.module.scss'
 import Map from './components/Map.tsx'
 import VenueCard from './components/VenueCard.tsx'
-import LibraryIcon from './assets/library.svg'
+import { ReactComponent as LibraryIcon } from './assets/library.svg'
 import SearchFields from './components/SearchFields.tsx'
 
 function App() {
@@ -32,7 +32,6 @@ function App() {
   return (
     <>
       <div className={styles['content']}>
-        {/* <LibraryIcon /> */}
         <h1>Trouve ta culture</h1>
         <p>Utilise la carte pour trouver des lieux culturels autour de toi</p>
         <SearchFields options={options} />
@@ -41,27 +40,27 @@ function App() {
       <div className={styles['content']}>
         <VenueCard
           name="Ma librairie"
-          icon={LibraryIcon}
+          Icon={LibraryIcon}
           address={'38 rue de Loiseau 78220 Virofly'}
         />
         <VenueCard
           name="Ma librairie"
-          icon={LibraryIcon}
+          Icon={LibraryIcon}
           address={'38 rue de Loiseau 78220 Virofly'}
         />
         <VenueCard
           name="Ma librairie"
-          icon={LibraryIcon}
+          Icon={LibraryIcon}
           address={'38 rue de Loiseau 78220 Virofly'}
         />
         <VenueCard
           name="Ma librairie"
-          icon={LibraryIcon}
+          Icon={LibraryIcon}
           address={'38 rue de Loiseau 78220 Virofly'}
         />
         <VenueCard
           name="Ma librairie"
-          icon={LibraryIcon}
+          Icon={LibraryIcon}
           address={'38 rue de Loiseau 78220 Virofly'}
         />
       </div>
