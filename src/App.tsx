@@ -3,7 +3,7 @@ import styles from './App.module.scss'
 import Map from './components/Map.tsx'
 import VenueCard from './components/VenueCard.tsx'
 import LibraryIcon from './assets/library.svg'
-import MultiSelect from './components/MultiSelect.tsx'
+import SearchFields from './components/SearchFields.tsx'
 
 function App() {
   const [latitude, setLatitude] = useState<number | undefined>(undefined)
@@ -14,15 +14,13 @@ function App() {
       position => {
         setLatitude(position.coords.latitude)
         setLongitude(position.coords.longitude)
-        console.log('coordonnées', latitude, longitude)
       },
       error => {
         // Géolocalisation non autorisée ou erreur
         console.error(error)
       }
-    ),
-      []
-  })
+    )
+  }, [])
 
   const options = [
     { value: 'option1', label: 'une librairie' },
@@ -37,7 +35,7 @@ function App() {
       <p className={styles['explanations']}>
         Utilise la carte pour trouver des lieux culturels autour de toi
       </p>
-      <MultiSelect options={options} />
+      <SearchFields options={options} />
       <Map latitude={latitude} longitude={longitude} />
       <VenueCard
         name="Ma librairie"

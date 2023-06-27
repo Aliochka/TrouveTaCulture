@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from './MultiSelect.module.scss'
+import styles from './SearchFields.module.scss'
 import Fuse from 'fuse.js'
 import Tag from './Tag'
 
@@ -12,7 +12,7 @@ interface MultiSelectProps {
   options: Option[]
 }
 
-const MultiSelect: React.FC<MultiSelectProps> = ({ options }) => {
+const SearchFields: React.FC<MultiSelectProps> = ({ options }) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([])
   const [filteredOptions, setFilteredOptions] = useState<Option[]>(options)
   const [isOpen, setIsOpen] = useState(false)
@@ -43,7 +43,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ options }) => {
   }
 
   return (
-    <>
+    <div className={styles['searchfields']}>
       <p>
         je recherche
         <span className={styles['multiselect']}>
@@ -79,8 +79,8 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ options }) => {
           />
         )
       })}
-    </>
+    </div>
   )
 }
 
-export default MultiSelect
+export default SearchFields

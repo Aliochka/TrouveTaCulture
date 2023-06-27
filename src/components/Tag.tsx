@@ -10,7 +10,6 @@ interface TagProps {
 }
 
 const Tag = ({ label, onClick, isSelected }: TagProps): JSX.Element => {
-  console.log(label)
   return (
     <span
       className={cn(styles['tag'], styles['closeable'], {
