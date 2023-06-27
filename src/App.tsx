@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import styles from './App.module.scss'
 import Map from './components/Map.tsx'
+import VenueCard from './components/VenueCard.tsx'
+import LibraryIcon from './assets/library.svg'
 
 function App() {
   const [latitude, setLatitude] = useState<number | undefined>(undefined)
@@ -28,6 +30,31 @@ function App() {
         Utilise la carte pour trouver des lieux culturels autour de toi
       </p>
       <Map latitude={latitude} longitude={longitude} />
+      <VenueCard
+        name="Ma librairie"
+        icon={LibraryIcon}
+        address={'38 rue de Loiseau 78220 Virofly'}
+      />
+      <VenueCard
+        name="Ma librairie"
+        icon={LibraryIcon}
+        address={'38 rue de Loiseau 78220 Virofly'}
+      />
+      <VenueCard
+        name="Ma librairie"
+        icon={LibraryIcon}
+        address={'38 rue de Loiseau 78220 Virofly'}
+      />
+      <VenueCard
+        name="Ma librairie"
+        icon={LibraryIcon}
+        address={'38 rue de Loiseau 78220 Virofly'}
+      />
+      <VenueCard
+        name="Ma librairie"
+        icon={LibraryIcon}
+        address={'38 rue de Loiseau 78220 Virofly'}
+      />
     </div>
   )
 }
