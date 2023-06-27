@@ -30,39 +30,42 @@ function App() {
   ]
 
   return (
-    <div className={styles['content']}>
-      <h1>Trouve ta culture</h1>
-      <p className={styles['explanations']}>
-        Utilise la carte pour trouver des lieux culturels autour de toi
-      </p>
-      <SearchFields options={options} />
+    <>
+      <div className={styles['content']}>
+        {/* <LibraryIcon /> */}
+        <h1>Trouve ta culture</h1>
+        <p>Utilise la carte pour trouver des lieux culturels autour de toi</p>
+        <SearchFields options={options} />
+      </div>
       <Map latitude={latitude} longitude={longitude} />
-      <VenueCard
-        name="Ma librairie"
-        icon={LibraryIcon}
-        address={'38 rue de Loiseau 78220 Virofly'}
-      />
-      <VenueCard
-        name="Ma librairie"
-        icon={LibraryIcon}
-        address={'38 rue de Loiseau 78220 Virofly'}
-      />
-      <VenueCard
-        name="Ma librairie"
-        icon={LibraryIcon}
-        address={'38 rue de Loiseau 78220 Virofly'}
-      />
-      <VenueCard
-        name="Ma librairie"
-        icon={LibraryIcon}
-        address={'38 rue de Loiseau 78220 Virofly'}
-      />
-      <VenueCard
-        name="Ma librairie"
-        icon={LibraryIcon}
-        address={'38 rue de Loiseau 78220 Virofly'}
-      />
-    </div>
+      <div className={styles['content']}>
+        <VenueCard
+          name="Ma librairie"
+          icon={LibraryIcon}
+          address={'38 rue de Loiseau 78220 Virofly'}
+        />
+        <VenueCard
+          name="Ma librairie"
+          icon={LibraryIcon}
+          address={'38 rue de Loiseau 78220 Virofly'}
+        />
+        <VenueCard
+          name="Ma librairie"
+          icon={LibraryIcon}
+          address={'38 rue de Loiseau 78220 Virofly'}
+        />
+        <VenueCard
+          name="Ma librairie"
+          icon={LibraryIcon}
+          address={'38 rue de Loiseau 78220 Virofly'}
+        />
+        <VenueCard
+          name="Ma librairie"
+          icon={LibraryIcon}
+          address={'38 rue de Loiseau 78220 Virofly'}
+        />
+      </div>
+    </>
   )
 }
 

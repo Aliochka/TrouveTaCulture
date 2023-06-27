@@ -1,3 +1,5 @@
+@use "../styles/_colors.scss" as colors;
+
 .searchfields {
   margin-bottom: 1rem;
 }
@@ -5,12 +7,16 @@
 .multiselect {
   display: inline-flex;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 200px;
   padding-bottom: 1rem;
 
   input {
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid colors.$border;
+
+    @media (prefers-color-scheme: dark) {
+      border-bottom: 1px solid colors.$border-dark;
+    }
 
     &::placeholder {
       font-weight: bold;

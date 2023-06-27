@@ -12,7 +12,10 @@ function Map({ latitude = 48.505, longitude = 2.49 }: MapProps) {
   const mapRef = useRef<HTMLDivElement | string>('')
 
   useEffect(() => {
-    const map = L.map(mapRef.current).setView([latitude, longitude], 15)
+    const map = L.map(mapRef.current, { scrollWheelZoom: false }).setView(
+      [latitude, longitude],
+      15
+    )
 
     // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     //   attribution:
