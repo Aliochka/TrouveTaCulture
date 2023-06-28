@@ -17,6 +17,7 @@ interface PlaceResponse {
   address: string
   coordinates: [number, number]
   placeType: string[]
+  isPassCulturePartner: boolean
 }
 
 function Home() {
@@ -71,7 +72,7 @@ function Home() {
       body: JSON.stringify({
         placeType: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
         position: [48.8669667, 2.3116348],
-        range: 1000,
+        range: 10000,
       }),
     })
       .then(response => response.json())
@@ -84,6 +85,7 @@ function Home() {
             name: d.name,
             address: d.address,
             placeType: d.placeType[0],
+            isPassCulturePartner: d.isPassCulturePartner,
           }))
         )
       })
