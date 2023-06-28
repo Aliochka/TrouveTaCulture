@@ -37,7 +37,7 @@ function App() {
         <SearchFields options={options} />
       </div>
       <Map latitude={latitude} longitude={longitude} />
-      <div className={styles['content']}>
+      <div className={styles['content-venue']}>
         <VenueCard
           name="Ma librairie"
           Icon={LibraryIcon}

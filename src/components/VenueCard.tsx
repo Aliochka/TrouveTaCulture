@@ -13,8 +13,10 @@ const ContactCard = ({ Icon, name, address }: ContactCardProps) => {
   return (
     <div className={styles['venue-card']}>
       <Icon />
-      <h3>{name}</h3>
-      <p>{address}</p>
+      <div>
+        <h3>{name}</h3>
+        <p>{address}</p>
+      </div>
     </div>
   )
 }

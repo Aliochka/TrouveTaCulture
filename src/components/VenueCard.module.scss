@@ -1,3 +1,9 @@
 .venue-card {
   text-align: left;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 2rem;
+  }
 }
