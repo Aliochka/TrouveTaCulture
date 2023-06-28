@@ -1,6 +1,6 @@
 // import { useEffect, useState } from 'react'
 import styles from './Venue.module.scss'
-import 'animate.css'
+
 function Venue() {
   return (
     <>
