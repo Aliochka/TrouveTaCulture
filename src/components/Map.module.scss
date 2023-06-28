@@ -1,5 +1,14 @@
 .map {
   min-width: 100%;
-  height: 600px;
+  height: 800px;
   margin-bottom: 1rem;
+}
+
+.icon {
+  svg {
+    background-color: #f6f6f5;
+    path {
+      fill: red;
+    }
+  }
 }
