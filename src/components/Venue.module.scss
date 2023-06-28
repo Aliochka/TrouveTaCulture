@@ -1,0 +1,33 @@
+
+  .lieu {
+    margin-left: 1em;
+    background-color: rgb(115, 110, 105);
+    border: 1px solid rgb(216, 69, 69);
+  }
+  .card .favori {
+    text-align: right;
+    padding-right: 55px;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid #de5ead;
+    border-top-color: #a0d1eb;
+    animation: spin 3s infinite linear;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .spinner {
+    opacity: 0;
+    transition: opacity 3s;
+  }
+  
