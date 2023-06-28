@@ -1,19 +1,17 @@
 @use "../styles/_colors.scss" as colors;
 
 .tag {
-  &:hover {
-    background-color: colors.$hover;
-  }
-
   white-space: nowrap;
   justify-content: center;
-  border: solid 1px colors.$border;
-  border-radius: 4px;
   display: inline-flex;
   margin: 4px;
 
   &.is-selected {
-    background-color: colors.$selected;
+    background-color: colors.$primary;
     border-color: colors.$selected;
+    color: colors.$background;
+  }
+  &:hover {
+    background-color: colors.$hover;
   }
 }

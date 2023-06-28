@@ -6,14 +6,18 @@ import Tag from './Tag'
 interface Option {
   value: string
   label: string
+  name: string
 }
 
 interface MultiSelectProps {
   options: Option[]
+  setFilters: (filters: string[]) => void
 }
 
-const SearchFields: React.FC<MultiSelectProps> = ({ options }) => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([])
+const SearchFields: React.FC<MultiSelectProps> = ({ options, setFilters }) => {
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(
+    options.map(option => option.value)
+  )
   const [filteredOptions, setFilteredOptions] = useState<Option[]>(options)
   const [isOpen, setIsOpen] = useState(false)
   const fuzeOptions: Fuse.IFuseOptions<Option> = {
@@ -29,8 +33,10 @@ const SearchFields: React.FC<MultiSelectProps> = ({ options }) => {
   const handleOptionToggle = (value: string) => {
     if (selectedOptions.includes(value)) {
       setSelectedOptions(selectedOptions.filter(option => option !== value))
+      setFilters(selectedOptions.filter(option => option !== value))
     } else {
       setSelectedOptions([...selectedOptions, value])
+      setFilters([...selectedOptions, value])
     }
   }
 
@@ -49,7 +55,7 @@ const SearchFields: React.FC<MultiSelectProps> = ({ options }) => {
         <span className={styles['multiselect']}>
           <input
             type="text"
-            placeholder="une librairie, un disquaire, un musée..."
+            placeholder="une librairie, un disquaire..."
             onChange={handleSearchChange}
           />
           {isOpen && (

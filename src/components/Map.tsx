@@ -3,25 +3,21 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import styles from './Map.module.scss'
 
-// const cate = [
-//   { id: 1, name: 'BEAUX_ARTS', publicName: 'Beaux-arts' }, //picture
-//   { id: 2, name: 'MUSIQUE_ENREGISTREE', publicName: 'Musique enregistrée' }, //music
-//   { id: 3, name: 'LIVRE', publicName: 'Livre' }, //library
-//   { id: 4, name: 'PRATIQUE_ART', publicName: 'Pratique artistique' }, // art supply
-//   { id: 5, name: 'FILM', publicName: 'Films, vidéos' }, // cinema
-//   { id: 6, name: 'MUSIQUE_LIVE', publicName: 'Musique live' }, //micropohone
-//   { id: 7, name: 'CONFERENCE', publicName: 'Conférences, rencontres' }, // center
-//   { id: 8, name: 'INSTRUMENT', publicName: 'Instrument de musique' }, // piano
-//   { id: 9, name: 'JEU', publicName: 'Jeux' }, // puzzle
-//   {
-//     id: 10,
-//     name: 'MUSEE',
-//     publicName: 'Musée, patrimoine, architecture, arts visuels',
-//   }, // museum
-//   { id: 11, name: 'CARTE_JEUNES', publicName: 'Carte jeunes' }, // cards
-//   { id: 12, name: 'CINEMA', publicName: 'Cinéma' }, // cinema
-//   { id: 13, name: 'SPECTACLE', publicName: 'Spectacle vivant' }, // theater
-// ]
+const mapFilters: { [key: number]: string } = {
+  1: 'BEAUX_ARTS',
+  2: 'MUSIQUE_ENREGISTREE',
+  3: 'LIVRE',
+  4: 'PRATIQUE_ART',
+  5: 'FILM',
+  6: 'MUSIQUE_LIVE',
+  7: 'CONFERENCE',
+  8: 'INSTRUMENT',
+  9: 'JEU',
+  10: 'MUSEE',
+  11: 'CARTE_JEUNES',
+  12: 'CINEMA',
+  13: 'SPECTACLE',
+}
 
 export interface Marker {
   latitude: number
@@ -47,12 +43,14 @@ interface MapProps {
   latitude?: number
   longitude?: number
   markers?: Marker[]
+  filters: string[]
 }
 
 function Map({
   latitude = 48.8669667,
   longitude = 2.3116348,
   markers,
+  filters,
 }: MapProps) {
   const mapRef = useRef<HTMLDivElement | string>('')
 
@@ -142,8 +140,8 @@ function Map({
 
     const microphoneIcon = L.divIcon({
       html: `<svg
-          width="48"
-          height="48"
+          width="18"
+          height="18"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -164,8 +162,8 @@ function Map({
 
     const cinemaIcon = L.divIcon({
       html: `<svg
-          width="48"
-          height="48"
+          width="18"
+          height="18"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -184,8 +182,8 @@ function Map({
 
     const centerIcon = L.divIcon({
       html: `<svg
-          width="48"
-          height="48"
+          width="18"
+          height="18"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -204,8 +202,8 @@ function Map({
 
     const pianoIcon = L.divIcon({
       html: `<svg
-          width="48"
-          height="48"
+          width="18"
+          height="18"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -224,8 +222,8 @@ function Map({
 
     const puzzleIcon = L.divIcon({
       html: `<svg
-          width="48"
-          height="48"
+          width="18"
+          height="18"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -244,8 +242,8 @@ function Map({
 
     const museumIcon = L.divIcon({
       html: `<svg
-          width="48"
-          height="48"
+          width="18"
+          height="18"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -264,8 +262,8 @@ function Map({
 
     const cardsIcon = L.divIcon({
       html: `<svg
-          width="48"
-          height="48"
+          width="18"
+          height="18"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -284,8 +282,8 @@ function Map({
 
     const theaterIcon = L.divIcon({
       html: `<svg
-          width="48"
-          height="48"
+          width="18"
+          height="18"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -329,18 +327,24 @@ function Map({
 
     if (markers) {
       for (const marker of markers) {
-        L.marker([marker.latitude, marker.longitude], {
-          icon: icons[marker.placeType],
-        })
-          .addTo(map)
-          .bindPopup(`${marker.name} - ${marker.placeType}`)
+        const placeTypeFilters: string[] = filters.map(
+          filter => mapFilters[parseInt(filter, 10)]
+        )
+
+        if (placeTypeFilters.includes(marker.placeType)) {
+          L.marker([marker.latitude, marker.longitude], {
+            icon: icons[marker.placeType],
+          })
+            .addTo(map)
+            .bindPopup(`${marker.name} - ${marker.placeType}`)
+        }
       }
     }
 
     return () => {
       map.remove()
     }
-  }, [latitude, longitude, markers])
+  }, [latitude, longitude, markers, filters])
 
   // @ts-expect-error - mapRef type is incorrerect
   return <div ref={mapRef} className={styles['map']}></div>
