@@ -7,12 +7,12 @@
 .multiselect {
   display: inline-flex;
   flex-direction: column;
-  min-width: 200px;
   padding-bottom: 1rem;
 
   input {
     border: none;
     border-bottom: 1px solid colors.$border;
+    margin-left: 0.5rem;
 
     @media (prefers-color-scheme: dark) {
       border-bottom: 1px solid colors.$border-dark;

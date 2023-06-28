@@ -11,19 +11,15 @@ interface TagProps {
 
 const Tag = ({ label, onClick, isSelected }: TagProps): JSX.Element => {
   return (
-    <span
+    <button
       className={cn(styles['tag'], styles['closeable'], {
         [styles['is-selected']]: isSelected,
       })}
+      onClick={onClick}
+      type="button"
     >
-      <button
-        className={styles['tag-close-button']}
-        onClick={onClick}
-        type="button"
-      >
-        {label}
-      </button>
-    </span>
+      {label}
+    </button>
   )
 }
 

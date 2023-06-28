@@ -24,6 +24,7 @@ function Home() {
   const [longitude, setLongitude] = useState<number | undefined>(undefined)
   const [options, setOptions] = useState([])
   const [markers, setMarkers] = useState<Marker[]>([])
+  const [filters, setFilters] = useState<string[]>([])
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -47,12 +48,11 @@ function Home() {
     })
       .then(response => response.json())
       .then(data => {
-        // Traitement de la réponse
-        console.log(data)
         setOptions(
           data.map((d: CategoryResponse) => ({
             value: d.id,
             label: d.publicName,
+            name: d.name,
           }))
         )
       })
@@ -69,15 +69,14 @@ function Home() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        placeType: [1, 2, 3],
+        placeType: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
         position: [48.8669667, 2.3116348],
-        range: 10000,
+        range: 1000,
       }),
     })
       .then(response => response.json())
       .then(data => {
         // Traitement de la réponse
-        console.log({ data })
         setMarkers(
           data.map((d: PlaceResponse) => ({
             latitude: d.coordinates[0],
@@ -92,8 +91,6 @@ function Home() {
         // Gestion des erreurs
         console.error({ error })
       })
-
-    console.log('markers', markers)
   }
 
   return (
@@ -101,12 +98,17 @@ function Home() {
       <div className={styles['content']}>
         <h1>Trouve ta culture</h1>
         <p>Utilise la carte pour trouver des lieux culturels autour de toi</p>
-        <SearchFields options={options} />
+        <SearchFields options={options} setFilters={setFilters} />
         <button onClick={handleOnCLick} type="submit">
           LANCE LA RECHERCHE LLAMA GPT
         </button>
       </div>
-      <Map latitude={latitude} longitude={longitude} markers={markers} />
+      <Map
+        latitude={latitude}
+        longitude={longitude}
+        markers={markers}
+        filters={filters}
+      />
       <div className={styles['content-venue']}>
         {markers.map(marker => {
           return (
